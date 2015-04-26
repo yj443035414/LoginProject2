@@ -59,12 +59,15 @@
 		<servlet-name>RegisterProxyServlet</servlet-name>
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
-  
-  	<!-- jstl标签定义 -->
-	<taglib>
+	
+	<!-- jstl标签定义 -->
+    <jsp-config>
+    	<taglib>
 	  	<taglib-uri>c</taglib-uri>
 	  	<taglib-location>/WEB-INF/tld/c.tld</taglib-location>
 	</taglib>
+    </jsp-config>
+    
 	<!-- welcome page -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
