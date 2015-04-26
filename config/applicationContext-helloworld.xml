@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+                        
+	<!-- id 表示你这个组件的名字，class表示组件类 -->
+	<bean id="hello" class="com.yj.spring.helloworld.HelloServiceImpl" />
+	<bean id="hello2" class="com.yj.spring.helloworld.HelloServiceImpl2" />
+	
+	<!-- loginDao 注入-->
+	<bean id="loginDao" class="com.yj.login.dao.impl.LoginDaoImpl"/>
+	
+	<!-- 登录注入 -->
+	<bean id="loginService" class="com.yj.login.service.impl.LoginServiceImpl" autowire="default">
+		<property name="loginDao" ref="loginDao"/>
+	</bean>
+	
+	<!-- login servlet 注入 -->
+	<bean name="loginServlet" class="com.yj.login.controller.LoginServlet">
+		<property name="loginService" ref="loginService"></property>
+	</bean>
+	
+	<!-- register servlet 注入 -->
+	<bean name="registerServlet" class="com.yj.login.controller.RegisterServlet">
+		<property name="loginService" ref="loginService"></property>
+	</bean>
+</beans>
